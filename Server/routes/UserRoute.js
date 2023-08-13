@@ -1,20 +1,12 @@
 const express = require('express')
 const router = express.Router();
-
-
-//FireBase configuration
-const admin = require('firebase-admin');
-const serviceAccount = require('../../fireBase.json');
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: 'https://sign-136a7.firebaseio.com'
-});
-const db = admin.firestore();
-
+const { db } = require('../FireBaseConfig');
 
 
 // Get a reference to the document
 const collectionRef = db.collection('User')
+
+
 
 
 
@@ -41,6 +33,10 @@ router.get('/:userId', async (req, res) => {
             res.status(500).json("Server error while fetching the file");
         });
 })
+
+
+
+
 
 
 /*
