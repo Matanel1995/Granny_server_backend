@@ -104,6 +104,32 @@ router.get('/getGroups', async (req, res)=>{
 })
 
 
+router.get('/userEmail', async(req, res)=> {
+    // get hold of user email from request
+    const userEmail = req.query.email;
+    const querySnapshot = await collectionRef.get();
+    const result = querySnapshot.docs.map(doc => doc.id);
+    console.log(result);
+    try{
+        for(let i = 0; i < result.length; i++) {
+            const tempUser = collectionRef.doc(result[i]);
+            const userDoc = await tempUser.get();
+            if(userDoc.data().email === userEmail) {
+                let responseArr = [];
+                responseArr.push(userDoc.data());
+                return res.status(200).json(responseArr);
+            }
+            // console.log(userDoc.data().email);
+        }
+        return res.status(404).json("No user has that email address");
+    }
+    catch(err) {
+        // print error message
+        console.log("Error:", error)
+    }
+})
+
+
 
 
 
