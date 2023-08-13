@@ -13,6 +13,8 @@ const collectionRef = db.collection('User')
 
 
 
+
+
 //--------------------GET METHODS ----------------------
 
 //GET details of specific user - using the userId. 
