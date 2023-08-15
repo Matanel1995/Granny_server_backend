@@ -103,7 +103,7 @@ router.get('/getGroups', async (req, res)=>{
     }
 })
 
-
+// get user information by emil http://localhost:8080/user/userEmail?email=arieh.norton@gmail.com
 router.get('/userEmail', async(req, res)=> {
     // get hold of user email from request
     const userEmail = req.query.email;
@@ -142,9 +142,6 @@ router.get('', async (req, res) => {
 
 /*
 משתמש - 
-
-    GET -   *הבאת משתמשים (מחזירה רשימה של משתמשים)(יחיד \ רבים).
-                 *הבאת הקבוצות (מחזריה רשימה של הקבוצות של אותו משתמש) (יחיד \ רבים).
 
     POST-  *הוספה של יוזר לקבוצה כאשר הוא פותח אותה (עדכון) (אולי אפשר להשתמש בפונקציה שבPUT).
     	
