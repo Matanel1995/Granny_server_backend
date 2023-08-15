@@ -74,11 +74,12 @@ router.get('/getGroups', async (req, res) => {
     }
 })
 
-router.post('/leaveGroup', async (req, res) => {
+router.get('/leaveGroup', async (req, res) => {
     try {
-        const userId = req.body.userId;
-        const groupId = req.body.groupId;
-
+        const userId = req.query.userId;
+        const groupId = req.query.groupId;
+        console.log(userId);
+        console.log(groupId);
         const docRef = collectionRef.doc(userId);
         const userDoc = await docRef.get();
 
